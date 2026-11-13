@@ -27,7 +27,7 @@ def md(body):
         nonlocal lst
         if lst: out.append(f"</{lst}>"); lst = None
     rows = []
-    for line in body.splitlines():
+    for line in body.splitlines() + [""]:
         if line.startswith("|"):
             cells = [c.strip() for c in line.strip("|").split("|")]
             if not set("".join(cells)) <= set("-: "): rows.append(cells)
