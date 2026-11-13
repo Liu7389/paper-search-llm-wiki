@@ -1,0 +1,182 @@
+[
+ {
+  "id": "S1",
+  "title": "LLM Wiki (gist)",
+  "author": "Andrej Karpathy",
+  "url": "https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f",
+  "accessed": "2026-11-13",
+  "type": "方法",
+  "used_for": "Wiki 三層結構、ingest/query/lint、index.md/log.md",
+  "caveat": "留言區多為工具宣傳，未採用"
+ },
+ {
+  "id": "S2",
+  "title": "Google Scholar Search Help",
+  "author": "Google",
+  "url": "https://scholar.google.ca/intl/en/scholar/help.html",
+  "accessed": "2026-11-13",
+  "type": "工具說明",
+  "used_for": "author:、引號標題、Since Year、Cited by、Related articles、All versions、Cite、alert",
+  "caveat": "頁面未把 allintitle: 列為搜尋技巧，Wiki 不寫成官方建議"
+ },
+ {
+  "id": "S3",
+  "title": "TRID Search Tips (PDF)",
+  "author": "Transportation Research Board (TRB)",
+  "url": "https://onlinepubs.trb.org/onlinepubs/tris/TRIDSearchTips.pdf",
+  "accessed": "2026-11-13",
+  "type": "工具說明",
+  "used_for": "TRID 布林、片語、萬用字元 *、TRT 索引詞、篩選",
+  "caveat": "本文件未寫收錄筆數"
+ },
+ {
+  "id": "S4",
+  "title": "Literature Searches (LibGuide)",
+  "author": "National Transportation Library (NTL), U.S. DOT",
+  "url": "https://transportation.libguides.com/Lit-Searches-Reviews/Literature-Searches",
+  "accessed": "2026-11-13",
+  "type": "方法",
+  "used_for": "文獻搜尋六步驟、TRID 逾 130 萬筆、記錄搜尋策略、品質重於數量",
+  "caveat": ""
+ },
+ {
+  "id": "S5",
+  "title": "Guidelines for snowballing in systematic literature studies and a replication in software engineering",
+  "author": "Claes Wohlin, EASE 2014, DOI 10.1145/2601248.2601268",
+  "url": "https://api.openalex.org/works/doi:10.1145%2F2601248.2601268",
+  "accessed": "2026-11-13",
+  "type": "論文（書目經 OpenAlex 核對）",
+  "used_for": "滾雪球法的原始出處",
+  "caveat": "只核對到書目與摘要開頭，程序細節取自 S6"
+ },
+ {
+  "id": "S6",
+  "title": "Assessing diversity in creating seed set for snowballing search for systematic literature review in software engineering",
+  "author": "Felizardo, Souza, Souza, Napoleão, Steinmacher, Gerosa",
+  "url": "https://users.ime.usp.br/~gerosa/papers/ESEM___Snowballing.pdf",
+  "accessed": "2026-11-13",
+  "type": "論文",
+  "used_for": "種子集 5–10 篇（引 Wohlin）、backward/forward、反覆到沒有新論文為止",
+  "caveat": "檔名看似 Wohlin 論文，實際是 Felizardo 等人的論文；出版年與 DOI 文件內未顯示"
+ },
+ {
+  "id": "S7",
+  "title": "臺灣博碩士論文知識加值系統新功能簡介",
+  "author": "國家圖書館知識服務組，2013-05-21（華梵大學圖書館轉載）",
+  "url": "https://lib.hfu.edu.tw/var/file/1/1001/img/55/815064612.pdf",
+  "accessed": "2026-11-13",
+  "type": "工具說明",
+  "used_for": "收錄民國45年至今、各學門、89年起推動電子全文授權上網",
+  "caveat": "2013 年資料，筆數已過時，Wiki 不引用筆數；國圖原 PDF（ref.ncl.edu.tw）被 robots 擋下"
+ },
+ {
+  "id": "S8",
+  "title": "臺大圖書館部落格：NDLTD 相關文章（永久網址、Zotero RIS 匯入、查指導教授論文）",
+  "author": "國立臺灣大學圖書館",
+  "url": "https://tul.blog.ntu.edu.tw/archives/tag/%E8%87%BA%E7%81%A3%E5%8D%9A%E7%A2%A9%E5%A3%AB%E8%AB%96%E6%96%87%E7%9F%A5%E8%AD%98%E5%8A%A0%E5%80%BC%E7%B3%BB%E7%B5%B1",
+  "accessed": "2026-11-13",
+  "type": "工具說明",
+  "used_for": "引用 NDLTD 永久網址、用 RIS 匯入 Zotero",
+  "caveat": ""
+ },
+ {
+  "id": "S9",
+  "title": "OpenAlex API 實際查詢結果（hard shoulder running）",
+  "author": "OpenAlex",
+  "url": "https://api.openalex.org/works?filter=title.search:%22hard%20shoulder%20running%22&per-page=8&sort=cited_by_count:desc",
+  "accessed": "2026-11-13",
+  "type": "實測資料",
+  "used_for": "交通工程示範：全文搜尋 322 筆含大量離題，標題搜尋 63 筆皆切題",
+  "caveat": "引用數會隨時間變動，以查詢日為準"
+ },
+ {
+  "id": "S10",
+  "title": "arXiv API User's Manual",
+  "author": "arXiv (Cornell University)",
+  "url": "https://info.arxiv.org/help/api/user-manual.html",
+  "accessed": "2026-11-13",
+  "type": "工具說明",
+  "used_for": "欄位前綴 ti/au/abs/cat/all、AND/OR/ANDNOT、引號片語、排序",
+  "caveat": ""
+ },
+ {
+  "id": "S11",
+  "title": "arXiv Content Moderation",
+  "author": "arXiv",
+  "url": "https://info.arxiv.org/help/moderation/index.html",
+  "accessed": "2026-11-13",
+  "type": "工具說明",
+  "used_for": "arXiv 審核不是同儕審查",
+  "caveat": ""
+ },
+ {
+  "id": "S12",
+  "title": "OpenAlex API 實際查詢結果（retrieval-augmented generation）",
+  "author": "OpenAlex",
+  "url": "https://api.openalex.org/works?filter=title.search:%22retrieval-augmented%20generation%22&per-page=8&sort=cited_by_count:desc",
+  "accessed": "2026-11-13",
+  "type": "實測資料",
+  "used_for": "AI 示範：全文 72,637 筆、標題 6,690 筆；同一篇出現預印本與正式版兩筆",
+  "caveat": "引用數與筆數隨時間變動，以查詢日為準"
+ },
+ {
+  "id": "S13",
+  "title": "ICORE/CORE Conference Rankings（ACL、EMNLP、CVPR、AAMAS、QCE 個別頁）",
+  "author": "CORE (Computing Research and Education Association of Australasia)",
+  "url": "https://portal.core.edu.au/conf-ranks/604/",
+  "accessed": "2026-11-13",
+  "type": "排名",
+  "used_for": "ACL A*(CORE2023)、EMNLP A*(ICORE2026)、CVPR A*(ICORE2026)、AAMAS ICORE2026 由 A* 調為 A、QCE 為 National/Regional",
+  "caveat": "其他頁 https://portal.core.edu.au/conf-ranks/196/ (ACL)、/448/ (EMNLP)、/922/ (AAMAS)、/2325/ (QCE)；SIGIR、SIGCOMM、IEEE S&P 頁被 robots 擋下，未取得 CORE 排名"
+ },
+ {
+  "id": "S14",
+  "title": "CSRankings（鏡像站）領域與會議清單",
+  "author": "CSRankings (Emery Berger)，yig.github.io 鏡像",
+  "url": "https://yig.github.io/CSrankings",
+  "accessed": "2026-11-13",
+  "type": "排名",
+  "used_for": "各領域列入的頂會：CV=CVPR/ECCV/ICCV、ML=ICLR/ICML/NeurIPS/KDD、NLP=ACL/EMNLP/NAACL、Web+IR=SIGIR/WWW、Networks=SIGCOMM/NSDI、Security=CCS/IEEE S&P/USENIX Security/NDSS；沒有量子領域",
+  "caveat": "鏡像站，非 csrankings.org 本站"
+ },
+ {
+  "id": "S15",
+  "title": "CS Publication Venues（博士生發表要求清單）",
+  "author": "Washington State University EECS，2026-04 修訂",
+  "url": "https://school.eecs.wsu.edu/cs-publication-venue/",
+  "accessed": "2026-11-13",
+  "type": "排名",
+  "used_for": "多代理人列 AAMAS；網路列 SIGCOMM、NSDI、MOBICOM、INFOCOM；沒有量子會議",
+  "caveat": "單一學校的清單"
+ },
+ {
+  "id": "S16",
+  "title": "OpenAlex 依會議篩選的實際查詢（CVPR、SIGIR、ACL、EMNLP、SIGCOMM、IEEE S&P、AAMAS、NeurIPS）",
+  "author": "OpenAlex；連結經 doi.org handle API 與官方頁核對",
+  "url": "https://api.openalex.org/works?filter=primary_location.source.id:S4210176548,title.search:%22image%20recognition%22&sort=cited_by_count:desc",
+  "accessed": "2026-11-13",
+  "type": "實測資料",
+  "used_for": "各子領域頂會論文與網址",
+  "caveat": "引用數隨時間變動；NeurIPS 的 10.52202 DOI 導向 Curran 代售頁，改用 proceedings.neurips.cc 官方頁"
+ },
+ {
+  "id": "S17",
+  "title": "World's Largest Gathering of Transportation Research Professionals（TRB 年會新聞稿）",
+  "author": "National Academies，2020-01-07",
+  "url": "https://www.nationalacademies.org/news/worlds-largest-gathering-of-transportation-research-professionals-jan-12-16-transportation-research-board-celebrates-centennial",
+  "accessed": "2026-11-13",
+  "type": "會議說明",
+  "used_for": "TRB 年會：近 14,000 人、近 800 場、逾 5,000 場發表",
+  "caveat": "2020 年數字"
+ },
+ {
+  "id": "S18",
+  "title": "TRB Annual Meeting Paper Review",
+  "author": "Transportation Research Board",
+  "url": "https://trb.secure-platform.com/a/page/TRBPaperReview",
+  "accessed": "2026-11-13",
+  "type": "會議說明",
+  "used_for": "年會投稿可選 Presentation and Publication，由 TRR 編輯委員會決定是否進入 TRR 審查",
+  "caveat": ""
+ }
+]

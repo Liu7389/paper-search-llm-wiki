@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>怎麼找論文</title>
+<style>
+:root{--bg:#f6f4ef;--card:#fffdf8;--ink:#1f2328;--mute:#5d6470;--line:#d9d4c7;--acc:#1f6f5c;--acc2:#b4532a;--chip:#e8efe9}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#15181b;--card:#1d2125;--ink:#e8e6e1;--mute:#a3a9b1;--line:#343a40;--acc:#5fc2a5;--acc2:#e89a6f;--chip:#24312c}}
+:root[data-theme="dark"]{--bg:#15181b;--card:#1d2125;--ink:#e8e6e1;--mute:#a3a9b1;--line:#343a40;--acc:#5fc2a5;--acc2:#e89a6f;--chip:#24312c}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif}
+.deck{height:100%;display:flex;align-items:center;justify-content:center;padding:16px}
+section{display:none;width:min(1100px,100%);min-height:min(620px,calc(100vh - 90px));background:var(--card);border:1px solid var(--line);border-radius:14px;padding:clamp(20px,4vw,48px);flex-direction:column;position:relative}
+section.on{display:flex}
+h1{font-size:clamp(28px,5vw,48px);margin:0 0 12px;line-height:1.2}
+h2{font-size:clamp(22px,3.4vw,34px);margin:0 0 18px;color:var(--acc)}
+p,li{font-size:clamp(16px,2.1vw,21px);line-height:1.6}
+ul,ol{margin:0;padding-left:1.3em}
+li{margin:4px 0}
+code{background:var(--chip);padding:1px 6px;border-radius:5px;font-size:.92em;word-break:break-word}
+.kicker{color:var(--acc2);font-weight:700;letter-spacing:.08em;font-size:14px;text-transform:uppercase}
+.mute{color:var(--mute)}
+.body{flex:1}
+.src{margin-top:18px;padding-top:10px;border-top:1px dashed var(--line);font-size:13px;color:var(--mute);display:flex;gap:10px;flex-wrap:wrap}
+.src a{color:var(--acc)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.box{border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.box h3{margin:0 0 6px;font-size:18px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;counter-reset:s}
+.steps div{border:1px solid var(--line);border-radius:10px;padding:12px;font-size:17px;line-height:1.5}
+.steps b{display:block;color:var(--acc)}
+.tbl{border-collapse:collapse;width:100%;font-size:clamp(14px,1.7vw,17px)}.tbl td{border-top:1px solid var(--line);padding:6px 8px;vertical-align:top;line-height:1.45}.tbl a{color:var(--acc)}
+.bar{height:28px;border-radius:6px;background:var(--acc2);color:#fff;font-size:14px;display:flex;align-items:center;padding-left:8px;margin:6px 0}
+.bar.ok{background:var(--acc)}
+.nav{position:fixed;bottom:10px;left:0;right:0;display:flex;justify-content:center;gap:10px;align-items:center;font-size:14px;color:var(--mute)}
+.nav button{background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:6px 14px;font-size:15px;cursor:pointer}
+details{margin:6px 0}summary{cursor:pointer;color:var(--acc)}
+@media (max-width:700px){.grid2,.steps{grid-template-columns:1fr}section{min-height:calc(100vh - 80px)}}
+</style>
+</head>
+<body>
+<div class="deck">
+
+<section class="on" data-wiki="overview" data-src="S4 S1">
+ <div class="body">
+  <div class="kicker">教學簡報 · 新手向</div>
+  <h1>怎麼找指定領域的論文？</h1>
+  <p class="mute">從一個題目，到一份可以交代來源的文獻清單</p>
+  <p>示範領域：交通工程＋人工智慧（影像、IR、LLM、RAG、網路、資安、Agent、量子）</p>
+  <p class="mute">本簡報每一頁都來自「論文搜尋 LLM Wiki」，頁尾標示 Wiki 頁面與原始來源編號。</p>
+ </div>
+</section>
+
+<section data-wiki="overview" data-src="S4">
+ <div class="body">
+  <h2>今天學完你會…</h2>
+  <ul>
+   <li>知道文獻搜尋的六個步驟</li>
+   <li>會用關鍵字、引號、AND / OR / NOT、截字 <code>*</code></li>
+   <li>會判斷頂會，並用 Google Scholar、TRID、arXiv、OpenAlex 找頂會論文</li>
+   <li>會用「滾雪球法」從幾篇好論文追出更多</li>
+   <li>知道找到多少就可以停：<b>品質比數量重要，找到 100% 並不實際</b></li>
+  </ul>
+ </div>
+</section>
+
+<section data-wiki="six-steps" data-src="S4">
+ <div class="body">
+  <h2>文獻搜尋六步驟</h2>
+  <div class="steps">
+   <div><b>1 定題與範圍</b>目標、深度、年份、地區、語言</div>
+   <div><b>2 選資源</b>搜尋引擎、資料庫、圖書館目錄</div>
+   <div><b>3 選詞</b>同義詞、縮寫、拼法、詞庫用語</div>
+   <div><b>4 組合並搜尋</b>布林運算、進階搜尋</div>
+   <div><b>5 檢視結果</b>調整用詞，注意常出現的作者與出處</div>
+   <div><b>6 整理結果</b>記錄書目、用書目管理工具</div>
+  </div>
+  <p class="mute">3 → 4 → 5 會來回好幾次；每次的搜尋策略都要記下來。</p>
+ </div>
+</section>
+
+<section data-wiki="keywords-boolean" data-src="S3 S4">
+ <div class="body">
+  <h2>關鍵字的四個工具</h2>
+  <div class="grid2">
+   <div class="box"><h3>引號 = 完整片語</h3><code>"traffic signals"</code></div>
+   <div class="box"><h3>AND 縮小、OR 擴大、NOT 排除</h3><code>(A OR B) AND C</code></div>
+   <div class="box"><h3>截字 *</h3><code>sign*</code> → sign、signs、signals、signalization<br><span class="mute">TRID 不會自動找單複數</span></div>
+   <div class="box"><h3>先列同義詞</h3>縮寫、拼法變化、詞庫的標準用語</div>
+  </div>
+ </div>
+</section>
+
+<section data-wiki="keywords-boolean" data-src="S9">
+ <div class="body">
+  <h2>實測：搜全文還是搜標題？</h2>
+  <p>在 OpenAlex 搜 <code>"hard shoulder running"</code>（路肩開放），依引用數排序：</p>
+  <div class="bar" style="width:100%">全文搜尋 322 筆：前 8 名沒有一篇標題是路肩開放</div>
+  <div class="bar ok" style="width:20%;min-width:220px">標題搜尋 63 筆：前 8 名全部切題</div>
+  <p><b>結論：</b>結果太雜就把詞限制在標題或摘要；太少就加 OR 同義詞。</p>
+  <p class="mute">高引用 ≠ 切題。查詢日 2026-11-13，數字會變動。</p>
+ </div>
+</section>
+
+<section data-wiki="google-scholar" data-src="S2 S4">
+ <div class="body">
+  <h2>Google Scholar：五個一定要會的按鈕</h2>
+  <ul>
+   <li><b>Cited by</b>：誰引用了這篇 → 找更新的研究</li>
+   <li><b>Related articles</b>：相似的文件</li>
+   <li><b>All versions</b>：同一篇的其他來源，常能找到可讀版本</li>
+   <li><b>Cite</b>：匯出 BibTeX、EndNote、RefMan、RefWorks</li>
+   <li><b>信封圖示</b>：建立 email 快訊</li>
+  </ul>
+  <p>找作者：<code>author:"d knuth"</code>　找特定論文：標題加引號　只看近年：<b>Since Year</b></p>
+ </div>
+</section>
+
+<section data-wiki="trid" data-src="S3 S4">
+ <div class="body">
+  <h2>交通領域專用：TRID</h2>
+  <ul>
+   <li>TRB 提供，結合 TRIS 與 ITRD，<b>逾 130 萬筆</b>，含進行中研究（RiP）</li>
+   <li>每筆都用 <b>TRT 詞庫</b>的索引詞標註</li>
+   <li>索引詞欄位會提示標準詞 → 先查標準詞再搜，比自己猜英文更完整</li>
+   <li>可依標題、人名、機關、期刊、主題、日期、語言篩選</li>
+  </ul>
+  <p class="mute">通用引擎（Google Scholar）＋領域資料庫（TRID）一起用。</p>
+ </div>
+</section>
+
+<section data-wiki="ndltd" data-src="S7 S8">
+ <div class="body">
+  <h2>臺灣的論文：博碩士論文知識加值系統</h2>
+  <ul>
+   <li>國家圖書館提供，收錄<b>民國 45 年至今</b>、各學門的博碩士論文</li>
+   <li>89 年起推動電子全文授權上網 → <b>只有授權的才能直接看全文</b></li>
+   <li>引用請用頁面上的<b>永久網址</b>（hdl.handle.net）</li>
+   <li>匯入 Zotero：用書目下載的 <b>RIS 檔</b>比較完整</li>
+  </ul>
+  <p class="mute">本土案例與中文用語（例如國道路肩開放）常先出現在學位論文。</p>
+ </div>
+</section>
+
+<section data-wiki="snowballing" data-src="S5 S6 S2">
+ <div class="body">
+  <h2>滾雪球法：從 5～10 篇種子開始</h2>
+  <svg viewBox="0 0 760 210" width="100%" role="img" aria-label="滾雪球法示意：種子論文往前追參考文獻，往後追被引用">
+   <g font-size="16" fill="currentColor" text-anchor="middle">
+    <rect x="290" y="70" width="180" height="60" rx="10" fill="none" stroke="currentColor"/><text x="380" y="97">種子論文</text><text x="380" y="118" font-size="13">5～10 篇、不同作者/年份/期刊</text>
+    <rect x="20" y="70" width="190" height="60" rx="10" fill="none" stroke="currentColor"/><text x="115" y="97">更早的研究</text><text x="115" y="118" font-size="13">它的參考文獻</text>
+    <rect x="550" y="70" width="190" height="60" rx="10" fill="none" stroke="currentColor"/><text x="645" y="97">更新的研究</text><text x="645" y="118" font-size="13">Cited by</text>
+    <line x1="290" y1="100" x2="214" y2="100" stroke="currentColor" stroke-width="2" marker-end="url(#a)"/><text x="252" y="88" font-size="13">Backward</text>
+    <line x1="470" y1="100" x2="546" y2="100" stroke="currentColor" stroke-width="2" marker-end="url(#a)"/><text x="508" y="88" font-size="13">Forward</text>
+    <path d="M115 134 C115 190 645 190 645 134" fill="none" stroke="currentColor" stroke-dasharray="5 5"/><text x="380" y="200" font-size="13">新納入的論文再當種子，直到某一輪沒有新論文</text>
+   </g>
+   <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="currentColor"/></marker></defs>
+  </svg>
+  <p class="mute">例：每輪新增 11、11、5、1、0 篇 → 第五輪 0 篇就停。原始指引：Wohlin, EASE 2014。</p>
+ </div>
+</section>
+
+<section data-wiki="manage-cite" data-src="S4 S2 S8">
+ <div class="body">
+  <h2>邊找邊記：搜尋紀錄表</h2>
+  <p>每一次搜尋都記一行，之後才能重現、修改：</p>
+  <div class="box"><code>日期 ｜ 資料庫 ｜ 查詢式 ｜ 篩選 ｜ 筆數 ｜ 留下幾篇</code><br>
+  <code>11/13 ｜ OpenAlex ｜ title:"hard shoulder running" ｜ 依引用數 ｜ 63 ｜ 4</code></div>
+  <p>書目交給工具管：Google Scholar <b>Cite</b> 匯出；NDLTD 用 <b>RIS</b> 匯入 Zotero。</p>
+ </div>
+</section>
+
+<section data-wiki="quality-stop" data-src="S4 S6 S7">
+ <div class="body">
+  <h2>什麼時候可以停？怎麼判斷好壞？</h2>
+  <ul>
+   <li>品質重於數量，100% 找齊不實際</li>
+   <li>常出現的作者與出處 → 多半是核心文獻</li>
+   <li>滾雪球某一輪沒有新論文 → 可以停</li>
+   <li>注意資料日期：舊文件的數字不能當現況</li>
+   <li>拿不到全文、或以為「沒有資料」→ 先問圖書館員</li>
+  </ul>
+ </div>
+</section>
+
+<section data-wiki="top-venues" data-src="S13 S14 S15 S17">
+ <div class="body">
+  <h2>先認識「頂會」</h2>
+  <table class="tbl">
+   <tr><td>影像辨識</td><td>CVPR、ICCV、ECCV</td></tr>
+   <tr><td>資訊檢索 IR</td><td>SIGIR、WWW</td></tr>
+   <tr><td>LLM／NLP（含 RAG）</td><td>ACL、EMNLP、NAACL</td></tr>
+   <tr><td>機器學習</td><td>NeurIPS、ICML、ICLR</td></tr>
+   <tr><td>網路／資安</td><td>SIGCOMM、NSDI／IEEE S&amp;P、CCS、USENIX Security、NDSS</td></tr>
+   <tr><td>Agent</td><td>AAMAS</td></tr>
+   <tr><td>量子</td><td>兩份排名都沒有量子領域 → 以 NeurIPS 量子機器學習論文示範</td></tr>
+   <tr><td>交通工程</td><td>TRB 年會（全球最大交通研究聚會）＋ TRR 期刊</td></tr>
+  </table>
+  <p class="mute">依據：CORE/ICORE 會議排名、CSRankings。排名會變：AAMAS 由 CORE2023 A* 變 ICORE2026 A。</p>
+ </div>
+</section>
+
+<section data-wiki="demo-traffic" data-src="S9 S18 S3 S6">
+ <div class="body">
+  <h2>完整示範一：路肩開放（交通工程）</h2>
+  <ol>
+   <li>定題：路肩開放對容量與安全的影響</li>
+   <li>OpenAlex 標題搜尋 63 筆 → 只留 TRB 的 TRR 期刊（DOI 10.3141）當種子：
+    <ul>
+     <li><a href="https://doi.org/10.3141/2278-08" target="_blank" rel="noopener">Operational Experience with Temporary Hard Shoulder Running in Germany (2012)</a></li>
+     <li><a href="https://doi.org/10.3141/2554-13" target="_blank" rel="noopener">Dynamic Hard Shoulder Running for Traffic Incident Management (2016)</a></li>
+    </ul></li>
+   <li>Backward + Forward 滾雪球</li>
+   <li>TRID：TRT 索引詞 + <code>shoulder*</code>，篩選 TRB 年會與 TRR</li>
+  </ol>
+ </div>
+</section>
+
+
+
+<section data-wiki="arxiv" data-src="S10 S11">
+ <div class="body">
+  <h2>AI 領域：arXiv 預印本</h2>
+  <div class="grid2">
+   <div class="box"><h3>欄位前綴</h3><code>ti:</code> 標題　<code>au:</code> 作者　<code>abs:</code> 摘要　<code>cat:</code> 分類　<code>all:</code> 全部</div>
+   <div class="box"><h3>布林與排序</h3><code>AND</code> <code>OR</code> <code>ANDNOT</code>，片語加雙引號；可依投稿日排序追最新</div>
+  </div>
+  <p style="margin-top:18px"><b>注意：arXiv 的審核不是同儕審查。</b>引用前，查它有沒有正式發表的會議或期刊版本。</p>
+ </div>
+</section>
+
+<section data-wiki="demo-ai" data-src="S16 S13 S14">
+ <div class="body">
+  <h2>完整示範二：AI 各子領域的頂會論文</h2>
+  <p class="mute" style="margin:0 0 8px">做法：先在 OpenAlex 找到「會議」，再用會議＋關鍵字篩選、依引用數排序，逐篇核對網址。點標題可開。</p>
+  <table class="tbl"><tr><td>影像辨識</td><td><b>CVPR</b></td><td><a href="https://doi.org/10.1109/cvpr.2016.90" target="_blank" rel="noopener">Deep Residual Learning for Image Recognition (2016)</a></td></tr><tr><td>資訊檢索 IR</td><td><b>SIGIR</b></td><td><a href="https://doi.org/10.1145/3626772.3657834" target="_blank" rel="noopener">The Power of Noise: Redefining Retrieval for RAG Systems (2024)</a></td></tr><tr><td>LLM</td><td><b>ACL</b></td><td><a href="https://doi.org/10.18653/v1/2023.acl-long.147" target="_blank" rel="noopener">Plan-and-Solve Prompting (2023)</a></td></tr><tr><td>RAG</td><td><b>EMNLP</b></td><td><a href="https://aclanthology.org/2023.emnlp-main.495/" target="_blank" rel="noopener">Active Retrieval Augmented Generation (2023)</a></td></tr><tr><td>網路</td><td><b>SIGCOMM</b></td><td><a href="https://doi.org/10.1145/3387514.3405882" target="_blank" rel="noopener">Understanding Operational 5G (2020)</a></td></tr><tr><td>資安</td><td><b>IEEE S&amp;P</b></td><td><a href="https://doi.org/10.1109/sp40001.2021.00019" target="_blank" rel="noopener">Machine Unlearning (2021)</a></td></tr><tr><td>Agent</td><td><b>AAMAS</b></td><td><a href="https://dl.acm.org/doi/10.5555/3398761.3398967" target="_blank" rel="noopener">Learning Transferable Cooperative Behavior in Multi-Agent Teams (2020)</a></td></tr><tr><td>量子</td><td><b>NeurIPS</b></td><td><a href="https://proceedings.neurips.cc/paper_files/paper/2022/hash/7611a3cb5d733e628081431445cb01fd-Abstract.html" target="_blank" rel="noopener">Escaping from the Barren Plateau via Gaussian Initializations… (2022)</a></td></tr></table>
+ </div>
+</section>
+
+<section data-wiki="practice" data-src="S9 S3 S2">
+ <div class="body">
+  <h2>小練習</h2>
+  <details><summary>Q1 結果很多又很雜，先做什麼？</summary><p>把關鍵詞限制在標題或摘要、加 AND 條件；回到步驟 3 調整用詞。</p></details>
+  <details><summary>Q2 想找 signal、signals、signalization，怎麼打？</summary><p><code>signal*</code>（截字）</p></details>
+  <details><summary>Q3 找到一篇很好的 2016 論文，怎麼找之後的研究？</summary><p>Google Scholar 的 <b>Cited by</b>（Forward 滾雪球）。</p></details>
+ </div>
+</section>
+
+<section data-wiki="llm-wiki-method" data-src="S1">
+ <div class="body">
+  <h2>幕後：這份簡報怎麼做出來</h2>
+  <ul>
+   <li>18 份原始資料 → LLM Wiki（15 頁）→ 本簡報</li>
+   <li>原始資料不改；Wiki 每句標來源；規則寫在 AGENTS.md</li>
+   <li>每張投影片標注 Wiki 頁面與來源，程式自動檢查對應</li>
+  </ul>
+  <p class="mute">← → 或空白鍵換頁</p>
+ </div>
+</section>
+
+</div>
+<div class="nav"><button id="prev" aria-label="上一頁">←</button><span id="pg"></span><button id="next" aria-label="下一頁">→</button></div>
+<script>
+const S=[...document.querySelectorAll('section')];let i=0;
+S.forEach(s=>{const d=document.createElement('div');d.className='src';const w=s.dataset.wiki;
+ d.innerHTML='Wiki：<a href="../wiki-site/'+w+'.html">'+w+'</a>　來源：'+s.dataset.src.split(' ').map(x=>'<a href="../wiki-site/sources.html#'+x+'">'+x+'</a>').join(' ');s.appendChild(d)});
+function go(n){i=Math.max(0,Math.min(S.length-1,n));S.forEach((s,k)=>s.classList.toggle('on',k===i));document.getElementById('pg').textContent=(i+1)+' / '+S.length;try{history.replaceState(null,'','#'+(i+1))}catch(e){}}
+document.getElementById('prev').onclick=()=>go(i-1);document.getElementById('next').onclick=()=>go(i+1);
+addEventListener('keydown',e=>{if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();go(i+1)}if(['ArrowLeft','PageUp'].includes(e.key))go(i-1)});
+let tx=0;addEventListener('touchstart',e=>tx=e.touches[0].clientX);addEventListener('touchend',e=>{const d=e.changedTouches[0].clientX-tx;if(Math.abs(d)>50)go(i+(d<0?1:-1))});
+go((parseInt(location.hash.slice(1))||1)-1);
+</script>
+</body>
+</html>

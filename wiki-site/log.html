@@ -1,0 +1,26 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>紀錄</title><style>:root{--bg:#f6f4ef;--card:#fffdf8;--ink:#1f2328;--mute:#5d6470;--line:#d9d4c7;--acc:#1f6f5c;--chip:#e8efe9}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#15181b;--card:#1d2125;--ink:#e8e6e1;--mute:#a3a9b1;--line:#343a40;--acc:#5fc2a5;--chip:#24312c}}
+:root[data-theme="dark"]{--bg:#15181b;--card:#1d2125;--ink:#e8e6e1;--mute:#a3a9b1;--line:#343a40;--acc:#5fc2a5;--chip:#24312c}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;line-height:1.7}
+main{max-width:860px;margin:0 auto;padding:24px 16px 60px}a{color:var(--acc)}code{background:var(--chip);padding:1px 5px;border-radius:4px;word-break:break-word}
+table{border-collapse:collapse;width:100%}td,th{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+nav{font-size:14px;color:var(--mute);border-bottom:1px solid var(--line);padding-bottom:8px;margin-bottom:16px}.cite{font-size:12px;color:var(--mute)}</style></head>
+<body><main><nav><a href="index.html">Wiki 索引</a> · <a href="sources.html">原始資料</a> · <a href="log.html">紀錄</a> · <a href="../slides/index.html">教學簡報</a> · <a href="../docs/loop.html">流程設計</a></nav><h1>log.md（只追加）</h1>
+<p>見 ../docs/run-log.md 的完整執行紀錄；此處為 Wiki 層摘要。</p>
+<ul>
+<li>2026-11-13 ingest S1 → llm-wiki-method, overview</li>
+<li>2026-11-13 ingest S2 → google-scholar, snowballing, manage-cite</li>
+<li>2026-11-13 ingest S3 → trid, keywords-boolean</li>
+<li>2026-11-13 ingest S4 → six-steps, overview, trid, quality-stop, manage-cite</li>
+<li>2026-11-13 ingest S5+S6 → snowballing（S6 身分不符事件，見 run-log #2）</li>
+<li>2026-11-13 ingest S7 → ndltd（原 PDF 被擋，改用轉載版；筆數過時不引用）</li>
+<li>2026-11-13 ingest S8 → ndltd, manage-cite</li>
+<li>2026-11-13 query OpenAlex → S9 → keywords-boolean, demo-traffic</li>
+<li>2026-11-13 lint → 見 run-log</li>
+<li>2026-11-13 query「出練習題」→ 新頁 practice（Query 結果存回）</li>
+<li>2026-11-13 ingest S10 → arxiv, demo-ai</li>
+<li>2026-11-13 ingest S11 → arxiv, demo-ai（核對：S10 未提同儕審查，另找 S11）</li>
+<li>2026-11-13 query OpenAlex → S12 → demo-ai（發現同一論文兩筆紀錄）</li>
+<li>2026-11-13 使用者要求：改抓頂會論文、必須附網址；AI 含影像、IR、LLM、網路、資安、RAG、Agent、量子</li>
+<li>2026-11-13 ingest S13–S15 → top-venues；S16 → demo-ai（重寫）；S17、S18 → top-venues, demo-traffic（移除 NDLTD 人工待辦）</li>
+</ul></main></body></html>

@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>流程設計</title>
+<style>
+:root{--bg:#f6f4ef;--card:#fffdf8;--ink:#1f2328;--mute:#5d6470;--line:#d9d4c7;--acc:#1f6f5c;--acc2:#b4532a;--hum:#3d5a99}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#15181b;--card:#1d2125;--ink:#e8e6e1;--mute:#a3a9b1;--line:#343a40;--acc:#5fc2a5;--acc2:#e89a6f;--hum:#8fa9e8}}
+:root[data-theme="dark"]{--bg:#15181b;--card:#1d2125;--ink:#e8e6e1;--mute:#a3a9b1;--line:#343a40;--acc:#5fc2a5;--acc2:#e89a6f;--hum:#8fa9e8}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;line-height:1.7}
+main{max-width:980px;margin:0 auto;padding:24px 16px 60px}
+a{color:var(--acc)}nav{font-size:14px;color:var(--mute);border-bottom:1px solid var(--line);padding-bottom:8px;margin-bottom:16px}
+.fig{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px;overflow-x:auto}
+svg{min-width:760px;width:100%;height:auto}
+svg text{fill:var(--ink);font-size:14px;font-family:inherit}
+.n{fill:var(--card);stroke:var(--acc);stroke-width:1.6}.h{stroke:var(--hum)}.g{stroke:var(--acc2);stroke-width:2}
+.e{stroke:var(--ink);stroke-width:1.4;fill:none}.f{stroke:var(--acc2);stroke-width:1.6;fill:none;stroke-dasharray:6 4}
+.small{font-size:12px!important;fill:var(--mute)!important;paint-order:stroke;stroke:var(--card);stroke-width:5px;stroke-linejoin:round}
+table{border-collapse:collapse;width:100%}td,th{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+</style>
+</head>
+<body><main>
+<nav><a href="../index.html">首頁</a> · <a href="../wiki-site/index.html">Wiki</a> · <a href="../slides/index.html">教學簡報</a> · <a href="run-log.html">執行紀錄</a></nav>
+<h1>Loop / Graph 設計</h1>
+<p>藍框是人參與的節點，橘色菱形是檢查閘門，橘色虛線是「不通過就回頭」。</p>
+<div class="fig">
+<svg viewBox="0 0 960 480" role="img" aria-label="流程圖：討論範圍、取得資料、核對身分、討論重點、寫 Wiki、Lint、查詢 Wiki、產生投影片、對應檢查、預覽發布">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="currentColor"/></marker></defs>
+<g color="currentColor" style="color:var(--ink)">
+<!-- row 1: ingest loop -->
+<text x="20" y="28" class="small">迴圈 ①：每篇資料跑一次（本次 18 次）</text>
+<rect class="n h" x="20" y="45" width="130" height="56" rx="10"/><text x="85" y="70" text-anchor="middle">1 討論範圍</text><text x="85" y="90" text-anchor="middle" class="small">人＋AI</text>
+<rect class="n" x="190" y="45" width="130" height="56" rx="10"/><text x="255" y="70" text-anchor="middle">2 取得資料</text><text x="255" y="90" text-anchor="middle" class="small">搜尋／下載</text>
+<polygon class="n g" points="425,40 490,73 425,106 360,73"/><text x="425" y="70" text-anchor="middle">3 核對</text><text x="425" y="88" text-anchor="middle" class="small">標題作者日期</text>
+<rect class="n h" x="530" y="45" width="130" height="56" rx="10"/><text x="595" y="70" text-anchor="middle">4 討論重點</text><text x="595" y="90" text-anchor="middle" class="small">先討論後生成</text>
+<rect class="n" x="700" y="45" width="110" height="56" rx="10"/><text x="755" y="70" text-anchor="middle">5 寫 Wiki</text><text x="755" y="90" text-anchor="middle" class="small">每句標來源</text>
+<polygon class="n g" points="890,40 950,73 890,106 830,73"/><text x="890" y="70" text-anchor="middle">6 Lint</text><text x="890" y="88" text-anchor="middle" class="small">check.py</text>
+<line class="e" x1="150" y1="73" x2="186" y2="73" marker-end="url(#ar)"/>
+<line class="e" x1="320" y1="73" x2="356" y2="73" marker-end="url(#ar)"/>
+<line class="e" x1="490" y1="73" x2="526" y2="73" marker-end="url(#ar)"/>
+<line class="e" x1="660" y1="73" x2="696" y2="73" marker-end="url(#ar)"/>
+<line class="e" x1="810" y1="73" x2="826" y2="73" marker-end="url(#ar)"/>
+<path class="f" d="M425 106 C425 150 255 150 255 105" marker-end="url(#ar)"/><text x="340" y="160" text-anchor="middle" class="small">身分不符／過時／被擋 → 換來源</text>
+<path class="f" d="M890 106 C890 150 755 150 755 105" marker-end="url(#ar)"/><text x="822" y="160" text-anchor="middle" class="small">缺來源標記 → 重寫</text>
+<path class="e" d="M890 40 C890 0 255 0 255 41" marker-end="url(#ar)"/><text x="570" y="16" text-anchor="middle" class="small">下一篇資料</text>
+<!-- row 2: slide loop -->
+<text x="20" y="215" class="small">迴圈 ②：產生簡報（≥5 篇 ingest 完才進入）</text>
+<line class="e" x1="890" y1="106" x2="890" y2="140"/><path class="e" d="M890 140 L960 140 L960 200 L85 200 L85 236" marker-end="url(#ar)"/>
+<rect class="n" x="20" y="240" width="130" height="56" rx="10"/><text x="85" y="265" text-anchor="middle">7 查詢 Wiki</text><text x="85" y="285" text-anchor="middle" class="small">讀 index → 選頁</text>
+<rect class="n h" x="190" y="240" width="130" height="56" rx="10"/><text x="255" y="265" text-anchor="middle">8 整理大綱</text><text x="255" y="285" text-anchor="middle" class="small">一張對一頁</text>
+<rect class="n" x="360" y="240" width="130" height="56" rx="10"/><text x="425" y="265" text-anchor="middle">9 產生投影片</text><text x="425" y="285" text-anchor="middle" class="small">data-wiki/src</text>
+<polygon class="n g" points="595,235 665,268 595,301 525,268"/><text x="595" y="265" text-anchor="middle">10 對應檢查</text><text x="595" y="283" text-anchor="middle" class="small">來源/數字/份數</text>
+<rect class="n h" x="700" y="240" width="110" height="56" rx="10"/><text x="755" y="265" text-anchor="middle">11 預覽</text><text x="755" y="285" text-anchor="middle" class="small">桌機＋手機</text>
+<rect class="n" x="840" y="240" width="110" height="56" rx="10"/><text x="895" y="265" text-anchor="middle">12 發布</text><text x="895" y="285" text-anchor="middle" class="small">GitHub Pages</text>
+<line class="e" x1="150" y1="268" x2="186" y2="268" marker-end="url(#ar)"/>
+<line class="e" x1="320" y1="268" x2="356" y2="268" marker-end="url(#ar)"/>
+<line class="e" x1="490" y1="268" x2="521" y2="268" marker-end="url(#ar)"/>
+<line class="e" x1="665" y1="268" x2="696" y2="268" marker-end="url(#ar)"/>
+<line class="e" x1="810" y1="268" x2="836" y2="268" marker-end="url(#ar)"/>
+<path class="f" d="M595 301 C595 345 425 345 425 300" marker-end="url(#ar)"/>
+<path class="f" d="M560 285 C520 470 85 470 85 300" marker-end="url(#ar)"/>
+<path class="f" d="M755 296 C755 380 255 380 255 300" marker-end="url(#ar)"/>
+<text x="560" y="360" text-anchor="middle" class="small">數字或來源對不上 → 重產該張</text>
+<text x="300" y="455" text-anchor="middle" class="small">Wiki 缺內容 → 查詢結果存回成新頁（例：practice）</text>
+<text x="610" y="390" text-anchor="middle" class="small">看不懂／排版壞 → 改大綱</text>
+</g>
+</svg>
+</div>
+
+<h2>文字說明</h2>
+<p><b>主線：</b>討論範圍 → 取得資料 → 核對身分 → 討論重點 → 寫 Wiki → Lint → 查詢 Wiki → 整理大綱 → 產生投影片 → 對應檢查 → 預覽 → 發布。</p>
+<table>
+<tr><th>問題</th><th>本設計</th></tr>
+<tr><td>哪些步驟會重複？</td><td>迴圈 ①（2→6）每篇資料跑一次，本次跑 18 次。迴圈 ②（7→10）每張投影片都要過對應檢查，不通過就回到 9 或回到 Wiki。Lint 在每次 ingest 後與產生簡報前都跑。</td></tr>
+<tr><td>哪裡檢查或重新生成？</td><td>三個閘門：<br>3 核對：標題、作者、日期、網址是否一致，資料是否過時、是否被擋。<br>6 Lint：每句有來源標記、來源存在、index 無孤兒頁、示範論文都有網址。<br>10 對應檢查：投影片的 Wiki 頁存在、來源屬於該頁、投影片上的數字在 Wiki 找得到、「N 份資料／N 頁」等於實際數量。<br>另外 1、4、8、11 有人參與。</td></tr>
+<tr><td>為什麼這樣設計？</td><td>簡報的可信度取決於 Wiki，Wiki 的可信度取決於來源。所以錯誤要在越前面擋越便宜：來源錯了，後面每一頁都會錯。投影片只能用 Wiki 有的內容，Wiki 缺東西就先補 Wiki（Query 結果存回），不讓簡報自己長出新事實，才能保證「來源 → Wiki 頁 → 投影片」可以一路追回去。</td></tr>
+</table>
+<h2>執行後的修改</h2>
+<ul>
+<li>原本流程是 2 取得 → 4 討論 → 5 寫 Wiki，核對放在 6 Lint。執行中發生「下載的 PDF 不是以為的那篇論文」、「資料過時」，所以把<b>核對身分提前成節點 3</b>，並寫進 AGENTS.md。</li>
+<li>投影片自己寫出 Wiki 沒有的數字，所以在節點 10 加入<b>數字可追溯檢查</b>；手動發現頁數寫錯後，再加入<b>份數／頁數檢查</b>。</li>
+<li>使用者要求「只用頂會論文、每篇附網址」後，在查詢節點就先核對 DOI 導向（避免導到代售頁），並在節點 10 加入「示範論文必須有網址」檢查。</li>
+<li>練習題投影片沒有對應的 Wiki 頁，新增「Wiki 缺內容 → 查詢結果存回 Wiki」這條回頭路。</li>
+</ul>
+</main></body></html>
