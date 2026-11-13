@@ -16,7 +16,8 @@ nav{font-size:14px;color:var(--mute);border-bottom:1px solid var(--line);padding
 <table><tr><th>7</th><th>1 ERROR、1 WARN</th><th>新增「示範頁的論文必須有網址」規則後，抓到交通示範提到一篇無 DOI 的論文；S15 只用在表格裡，檢查程式沒算到</th><th>改寫該句不列論文名；check.py 改為表格中的來源也算使用</th></tr><tr><td>8</td><td>通過</td><td>—</td><td>—</td></tr></table>
 <h2>D. 預覽</h2>
 <ul>
-<li>用 Chromium 開啟簡報，桌機與手機寬度截圖檢查（見 docs/screenshots/）。</li>
+<li>D1 用 Chromium 開啟簡報，桌機與手機寬度截圖檢查（見 docs/screenshots/）。</li>
+<li>D2 發布到 GitHub Pages 後逐頁打開，發現 Wiki 索引頁的表格沒有輸出（build.py 遇到頁面最後一行是表格時沒輸出）→ 修正並重新發布，確認 15 列都出現。</li>
 </ul>
 <h2>統計</h2>
 <ul>

@@ -44,7 +44,8 @@
 | 8 | 通過 | — | — |
 
 ## D. 預覽
-- 用 Chromium 開啟簡報，桌機與手機寬度截圖檢查（見 docs/screenshots/）。
+- D1 用 Chromium 開啟簡報，桌機與手機寬度截圖檢查（見 docs/screenshots/）。
+- D2 發布到 GitHub Pages 後逐頁打開，發現 Wiki 索引頁的表格沒有輸出（build.py 遇到頁面最後一行是表格時沒輸出）→ 修正並重新發布，確認 15 列都出現。
 
 ## 統計
 - 原始資料 18 份（≥5）；Wiki 15 個內容頁＋index＋log；投影片 17 張，每張都對應 1 個 Wiki 頁與來源；示範論文 20 篇，每篇都有網址。
